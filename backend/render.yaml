@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: repomind-api
+    runtime: docker
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: "*"
+    disk:
+      name: repomind-data
+      mountPath: /app/chroma_db
+      sizeGB: 1
